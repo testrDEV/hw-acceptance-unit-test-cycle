@@ -1,0 +1,22 @@
+-#  This file is app/views/movies/index.html.haml
+%h2= "Movies with director #{@movies_director_hash[:director]}"
+
+
+%table#movies.table.table-striped.col-md-12
+  %thead
+    %tr
+      %th Movie Title
+      %th Rating
+      %th Release Date
+      %th More Info
+      %th Director
+  %tbody
+    - @movies_director_hash[:movies].each do |movie|
+      %tr
+        %td= movie.title
+        %td= movie.rating
+        %td= movie.release_date
+        %td= movie.director
+        %td= link_to "More about #{movie.title}", movie_path(movie)
+
+= link_to 'Back to Home', movies_path
